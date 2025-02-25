@@ -3,6 +3,9 @@ const container
 
 container.addEventListener('mousemove',
     (event) => {
+        if (!document.getElementById('drawCheck')?.checked) {
+            return;
+        }
         const posX = event.offsetX;
         // console.log('posX: ' + posX);
 
@@ -12,7 +15,9 @@ container.addEventListener('mousemove',
         const img = document.createElement('img');
         img.classList.add('img');
 
-        img.src = 'img/fire.png';
+        const imgName = document.querySelector('input[name="r"]:checked')?.value
+
+        img.src = `img/${imgName}.png`;
         img.style.left = posX + 'px';
         img.style.top = posY + 'px';
         container.append(img);
